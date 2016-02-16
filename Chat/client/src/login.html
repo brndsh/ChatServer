@@ -1,4 +1,12 @@
 <h2>Welcome to chat!</h2>
 
-<input type="button" ng-model="nick"></input>
-<button ng-click="login()">Login</button>
+<div ng-hide="loggedIn"> 
+	<input type="button" ng-model="nick"></input>
+	<button ng-click="login()">Login</button>
+</div>
+
+<ul>
+	<li ng-repeat="room in rooms">
+		{{room.topic}}
+	</li>
+</ul>

@@ -16,16 +16,22 @@ function($scope,$http){
 
 	var socket = io.connect("http://localhost:8080");
 	socket.on("roomlist", function(data){
-		console.log(data);
+		//console.log(data);
+		$scope.$apply(function(){
+			$scope.rooms = data;
+		});
 	});
 
 	$scope.rooms="";
 	
 	$scope.nick="";
+	$scope.loggedIn = false;
+	$scope.rooms = [];
+
 	$scope.login = function(){
 		socket.emit("adduser", $scope.nick, function(available){
 			if(available){
-				//
+				$scope.loggedIn = true;
 			}
 		});
 	};
