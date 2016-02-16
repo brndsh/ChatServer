@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="ChatApp">
+	<head>
+		<script src="bower_components/jquery/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.min.js"></script>
+
+		<script src="src/app.js"></script>
+		<script src="src/login/LoginController.js"></script>
+		<script src="src/resource/ChatResource.js"></script>
+	</head>
+	<body>
+		<div ng-view>
+		</div>
+
+	</body>
+</html>

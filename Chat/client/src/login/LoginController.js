@@ -2,8 +2,8 @@
 
 
 angular.module("ChatApp").controller("LoginController", 
-["$scope", "ChatResource",
-function LoginController($scope, $location, ChatResource){
+["$scope", "$location", "socket",
+function LoginController($scope, $location, socket){
 	
 	$scope.user = "";
 	$scope.errorMessage = "";
