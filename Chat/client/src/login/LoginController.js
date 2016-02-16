@@ -2,17 +2,16 @@
 
 
 angular.module("ChatApp").controller("LoginController", 
-["$scope",
-function LoginController($scope){
+["$scope", "ChatResource",
+function LoginController($scope, $location, ChatResource){
 	
 	$scope.user = "";
-	$scope.pass = "";
 	$scope.errorMessage = "";
-/*
+
 	$scope.onLogin = function onLogin() {
-		ChatResource.login($scope.user, $scope.pass, function(success){
+		ChatResource.login($scope.user, function(success){
 			if (!success) {
-				$scope.errorMessage = "Innskráning mistóks"//When login fails
+				$scope.errorMessage = "Innskráning mistókst"//When login fails
 			}
 			else {
 				$location("#/roomlist");
@@ -21,5 +20,5 @@ function LoginController($scope){
 		})
 	};
 
-	*/
+	
 }]);
