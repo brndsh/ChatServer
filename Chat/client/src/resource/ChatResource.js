@@ -1,5 +1,5 @@
 //Used Briant Ford Angular Socket io = http://briantford.com/blog/angular-socket-io
-angular.module("ChatApp").factory('ChatResource', function ($rootScope) {
+angular.module("ChatApp").factory('socket', function ($rootScope) {
   var socket = io.connect("http://localhost:8080");
   return {
     on: function (eventName, callback) {
