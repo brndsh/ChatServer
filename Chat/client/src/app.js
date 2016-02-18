@@ -3,12 +3,12 @@ angular.module("ChatApp", ["ngRoute"])
 	$routeProvider.when("/login", {
 		templateUrl: "src/login/login.html",
 		controller: "LoginController"
-	})/*.when("/rooms/:roomId", {
-		templateUrl:"src/views/room.html",
+	})/*.when("/room/:roomId", {
+		templateUrl:"roomlist/room.html",
 		controller: "RoomController"
-	}).when("/roomlist", {
-		templateUrl: "src/roomlist/list.html"
+	})*/.when("/roomlist", {
+		templateUrl: "src/roomlist/roomlist.html",
 		controller: "RoomlistController"
-		}).otherwise({redirectTo: "/login"});*/
+		}).otherwise({redirectTo: "/login"});
 
 });

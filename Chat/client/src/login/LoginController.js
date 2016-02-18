@@ -4,11 +4,11 @@ function LoginController($scope, $http, $location){
 	
 	var socket = io.connect("http://localhost:8080");
 	
-	socket.on("roomlist", function(data){
-		$scope.apply(function(){
+	/*socket.on("roomlist", function(data){
+		$scope.$apply(function(){
 			$scope.rooms = data;
 		});
-	});
+	});*/
 
 	$scope.nick = "";
 	$scope.errorMessage = "";
@@ -31,9 +31,11 @@ function LoginController($scope, $http, $location){
 			}
 			else {
 				$scope.loggedIn = true;
-				$location.path("/roomlist");
+				//$location.path("/roomlist");
 				console.log("innskraning tokst");
-				$scope.$apply();
+				$scope.$apply(function(){
+					$location.path('/roomlist')
+				});
 				//TODO senda notandann á herbergjalistann
 			}
 		})

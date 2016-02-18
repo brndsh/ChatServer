@@ -1,16 +1,19 @@
-<table>
-	<thead>
-		<th></th>
-	</thead>
-	<tbody>
-		<tr ng-repeat="room in roomlist">
-			<td>{{room.name}}</td>
+<div ng-controller="RoomlistController">
+	<h2>Welcome to roooooms</h2>
+	<table>
+		<thead>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="room in roomlist">
+				<td>{{room.topic}}</td>
 
-		</tr>
-	</tbody>	
-</table>
-<!--<ul>
-	<li ng-repeat="room in roomlist">
-		<a ng-href="#/rooms/{{room.id}}">{{room.name}}</a>
-	</li>
-</ul> -->
+			</tr>
+		</tbody>	
+	</table>
+	<!--<ul>
+		<li ng-repeat="room in roomlist">
+			<a ng-href="#/rooms/{{room.id}}">{{room.name}}</a>
+		</li>
+	</ul> -->
+</div>
