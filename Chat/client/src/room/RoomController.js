@@ -8,4 +8,6 @@ function RoomController($scope, $routeParams, $location) {
 	if(status === available){
 		
 	}
+
+	
 }]);

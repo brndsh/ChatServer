@@ -31,6 +31,7 @@ function LoginController($scope, $http, $location){
 			}
 			else {
 				$scope.loggedIn = true;
+
 				//$location.path("/roomlist");
 				console.log("innskraning tokst");
 				$scope.$apply(function(){
