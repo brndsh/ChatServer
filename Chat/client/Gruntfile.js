@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 		}
 	},
 
-	build: ['Gruntfile.js', '../client/src/*.js']
+	build: ['Gruntfile.js', '/client/src/*.js']
     },
       connect: {
 	    server: {
@@ -35,13 +35,13 @@ module.exports = function(grunt) {
 	        port: 8000,
 	        keepalive: true,
          	socketio: true,
-	        base: ['./src']
+	        base: ['.']
 	      },
 	      livereload: {
           options: {
             middleware: function (connect) {
               return [
-                require('./chatserver')
+                require('/server/chatserver.js')
               ];
             }
           }

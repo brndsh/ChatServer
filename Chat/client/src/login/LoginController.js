@@ -1,11 +1,16 @@
-"use strict";
-
-
 angular.module("ChatApp").controller("LoginController", 
 ["$scope", "$location", "ChatResource",
 function LoginController($scope, $location, ChatResource){
 	
-	$scope.user = "";
+	$scope.$watch("nick", function (newValue, oldValue){
+		if(newValue){
+			if(newValue.length > 3){
+				
+			}
+		}
+	});
+
+	//$scope.user = "";
 	$scope.errorMessage = "";
 
 	$scope.onLogin = function onLogin() {
@@ -17,7 +22,7 @@ function LoginController($scope, $location, ChatResource){
 			}
 			else {
 				$scope.$apply(function(){
-					$location.path("/roomlist");
+					$location.path("/src/roomlist");
 				})
 				//TODO senda notandann á herbergjalistann
 			}

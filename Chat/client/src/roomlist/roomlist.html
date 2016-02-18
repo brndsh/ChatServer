@@ -1,5 +1,16 @@
-<ul>
+<table>
+	<thead>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="room in roomlist">
+			<td>{{room.name}}</td>
+
+		</tr>
+	</tbody>	
+</table>
+<!--<ul>
 	<li ng-repeat="room in roomlist">
 		<a ng-href="#/rooms/{{room.id}}">{{room.name}}</a>
 	</li>
-</ul>
+</ul> -->

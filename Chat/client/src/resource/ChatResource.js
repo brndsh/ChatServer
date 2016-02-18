@@ -1,22 +1,3 @@
-/*"use strict";
-
-angular.module("chatApp").factory("ChatResource", 
-function ChatResource() {
-	return {
-		login: function login(user, pass, callback) {
-			//TODO
-		},
-
-		getRoomList: function getRoomList(callback) {
-			//TODO
-		},
-
-	};
-});
-
-*/
-
-"use strict";
 //Used Briant Ford Angular Socket io = http://briantford.com/blog/angular-socket-io
 angular.module("ChatApp").factory('ChatResource', function ($rootScope) {
   var socket = io.connect("http://localhost:8080");
