@@ -13,7 +13,7 @@ function LoginController($scope, $http, $location){
 	$scope.nick = "";
 	$scope.errorMessage = "";
 	$scope.loggedIn = false;
-	//$scope.user = "";
+	
 
 	$scope.$watch("nick", function (newValue, oldValue){
 		if(newValue){
@@ -41,4 +41,5 @@ function LoginController($scope, $http, $location){
 			}
 		})
 	};
+
 }]);

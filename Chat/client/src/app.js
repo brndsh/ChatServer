@@ -3,7 +3,7 @@ angular.module("ChatApp", ["ngRoute"])
 	$routeProvider.when("/login", {
 		templateUrl: "src/login/login.html",
 		controller: "LoginController"
-	}).when("/room/: roomID", {
+	}).when("/room/:roomID", {
 		templateUrl:"src/room/room.html",
 		controller: "RoomController"
 	}).when("/roomlist", {

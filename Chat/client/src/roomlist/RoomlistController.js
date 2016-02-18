@@ -3,19 +3,25 @@ angular.module("ChatApp").controller("RoomlistController",
 function RoomlistController($scope, $routeParams, $location) {
 	var socket = io.connect("http://localhost:8080");
 	
-/*
-	var whenRoomListChanges = function (roomlist){
-		console.log(roomlist);
-		$scope.$apply(function() {
-			$scope.roomlist = roomlist;
-		});
-	}	
-*/
+
 	socket.on("roomlist", function(roomlist){
 		$scope.$apply(function(){
 			$scope.roomlist = Object.getOwnPropertyNames(roomlist);
 		})
 	});
+
+	$scope.user = "";
+	socket.on("userlist", function(users){
+		console.log("viðerumíuserlist");
+		$scope.$apply(function(){
+			console.log("applyumusers");
+			console.log(users);
+			$scope.user = users;
+		})
+	});
+
+	socket.emit("users");
+
 	socket.emit("rooms");
 	$scope.roomName = "";
 	$scope.createRoom = function() {
@@ -35,13 +41,33 @@ function RoomlistController($scope, $routeParams, $location) {
 		});
 	}
 
-	/*
-	$scope.roomlist = [{
-		name: "Lounge:",
-		numParticipants: 10
-	}, {
-		name: "WEPO", 
-		numParticipants: 110
-	}];
-	*/
+
+	$scope.roomName = "";
+
+	$scope.joinRoom = function(){
+		socket.emit("joinroom", {room: $scope.roomName}, function(available){
+			$scope.$apply(function(){
+				$location.path('/room/' + $scope.roomName);
+			})
+		});
+	}
+
+	$scope.joinRoomEx = function(thisroom){
+		var roomy = new Object();
+		roomy.room = thisroom;
+
+		socket.emit("joinroom", {room: thisroom}, function(available){
+			if(available){
+				$scope.$apply(function(){
+					$location.path('/room/' + thisroom);
+				})
+			}
+			else{
+				$scope.$apply(function(){
+					$scope.errorMessage = "FAILED!";
+				})
+			}
+
+		});
+	}
 }]);

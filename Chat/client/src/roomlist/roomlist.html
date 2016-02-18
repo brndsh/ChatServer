@@ -1,12 +1,22 @@
 <div ng-controller="RoomlistController">
 	<h2>Welcome!</h2>
-		<ul>
-			<li ng-repeat="room in roomlist">
-				<a ng-href="#/rooms/{{room.id}}">{{room}}</a>
-			</li>
-		</ul>
-		<div> 
-			<input type="text" ng-model="roomName"></input>
-			<button ng-click="createRoom()">Create</button>
+		<div>
+			<ul>
+				<li ng-repeat="room in roomlist">
+					<a ng-click="joinRoomEx(room)" ng-href="#/room/{{room}}">{{room}}</a>
+				</li>
+			</ul>
+			<div> 
+				<input type="text" ng-model="roomName"></input>
+				<button ng-click="createRoom()">Create</button>
+			</div>
+		</div>
+	<h3>Online users:</h3>
+		<div>
+			<ul>
+				<li ng-repeat="user in user">
+					{{user}}
+				</li>
+			</ul>
 		</div>
 </div>

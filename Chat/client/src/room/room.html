@@ -1,12 +1,15 @@
 <div ng-controller="RoomController">
 	<h2>Rooms!</h2>
-		<ul>
-			<li ng-repeat="room in roomlist">
-				<a ng-href="#/rooms/{{room.id}}">{{room}}</a>
-			</li>
-		</ul>
 		<div> 
-			<input type="text" ng-model="room"></input>
-			<button ng-click="getRoom()">Create</button>
+			<button ng-click="leaveRoom()" ng-href="#/roomlist">Leave room</button>
+		</div>
+
+	<h3>Users in room:</h3>
+		<div>
+			<ul>
+				<li ng-repeat="user in user">
+					{{user}}
+				</li>
+			</ul>
 		</div>
 </div>
