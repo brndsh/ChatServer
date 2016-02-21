@@ -23,5 +23,6 @@ function RoomController($scope, $routeParams, $location, $http) {
 		$scope.user = users;
 		})
 	});
+	socket.emit("users");
 	
 }]);

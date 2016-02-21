@@ -42,6 +42,8 @@ function RoomlistController($scope, $routeParams, $location) {
 		});
 	}
 
+	
+
 	socket.on("userlist", function(users) {
 		//console.log("viðerumíuserlist");
 		$scope.$apply(function() {
