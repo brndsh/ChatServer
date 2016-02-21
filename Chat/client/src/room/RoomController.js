@@ -12,7 +12,7 @@ function RoomController($scope, $routeParams, $location, $http) {
 
 	$scope.leaveRoom = function(){
 		socket.emit("partroom", thisRoom); 
-		$location.path('/roomlist');		
+		$location.path("/roomlist");		
 	}
 
 	$scope.user = "";

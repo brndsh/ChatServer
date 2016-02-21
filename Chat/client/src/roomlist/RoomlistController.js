@@ -10,19 +10,9 @@ function RoomlistController($scope, $routeParams, $location) {
 		})
 	});
 
-	$scope.user = "";
-	socket.on("userlist", function(users){
-		console.log("viðerumíuserlist");
-		$scope.$apply(function(){
-			console.log("applyumusers");
-			console.log(users);
-			$scope.user = users;
-		})
-	});
-
-	socket.emit("users");
-
 	socket.emit("rooms");
+
+
 	$scope.roomName = "";
 	$scope.createRoom = function() {
 		socket.emit("joinroom", {room: $scope.roomName}, function(available){
@@ -34,40 +24,43 @@ function RoomlistController($scope, $routeParams, $location) {
 				//$location.path("/roomlist");
 				console.log("jei nytt room");
 				$scope.$apply(function(){
-					$location.path('/room/' + $scope.roomName)
+					$location.path("/room/" + $scope.roomName)
 				});
-				//TODO senda notandann á herbergjalistann
 			}
 		});
 	}
 
 
-	$scope.roomName = "";
+	$scope.joinRoom = function(thisRoom){
+		var joiningRoom = new Object();
+		joiningRoom.room = thisRoom;
 
-	$scope.joinRoom = function(){
-		socket.emit("joinroom", {room: $scope.roomName}, function(available){
-			$scope.$apply(function(){
-				$location.path('/room/' + $scope.roomName);
-			})
-		});
-	}
-
-	$scope.joinRoomEx = function(thisroom){
-		var roomy = new Object();
-		roomy.room = thisroom;
-
-		socket.emit("joinroom", {room: thisroom}, function(available){
-			if(available){
-				$scope.$apply(function(){
-					$location.path('/room/' + thisroom);
-				})
-			}
-			else{
+		socket.emit("joinroom", {room: thisRoom}, function(available){
+			if(!available){
 				$scope.$apply(function(){
 					$scope.errorMessage = "FAILED!";
 				})
 			}
+			else{
+
+				$scope.$apply(function(){
+					$location.path("/room/" + thisRoom);
+				})
+			}
 
 		});
 	}
+
+			$scope.user = "";
+			socket.on("userlist", function(users){
+			console.log("viðerumíuserlist");
+			$scope.$apply(function(){
+			console.log("applyumusers");
+			console.log(users);
+			$scope.user = users;
+		})
+	});
+
+			socket.emit("users");
+
 }]);

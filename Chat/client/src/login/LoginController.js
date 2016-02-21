@@ -3,12 +3,7 @@ angular.module("ChatApp").controller("LoginController",
 function LoginController($scope, $http, $location){
 	
 	var socket = io.connect("http://localhost:8080");
-	
-	/*socket.on("roomlist", function(data){
-		$scope.$apply(function(){
-			$scope.rooms = data;
-		});
-	});*/
+
 
 	$scope.nick = "";
 	$scope.errorMessage = "";
@@ -19,6 +14,7 @@ function LoginController($scope, $http, $location){
 		if(newValue){
 			if(newValue.length <= 3){   
 				console.log("too short username");
+				$scope.errorMessage = "Username has to be longer than 3 letters.";
 			}
 		}
 	});
@@ -28,6 +24,7 @@ function LoginController($scope, $http, $location){
 			if (!available) {
 				$scope.loginError = "Innskráning mistókst"//When login fails
 				console.log("innskraning tokst ekki");
+				$scope.errorMessage = "Nickname is already in use.";
 			}
 			else {
 				$scope.loggedIn = true;
@@ -35,7 +32,7 @@ function LoginController($scope, $http, $location){
 				//$location.path("/roomlist");
 				console.log("innskraning tokst");
 				$scope.$apply(function(){
-					$location.path('/roomlist')
+					$location.path("/roomlist")
 				});
 				//TODO senda notandann á herbergjalistann
 			}

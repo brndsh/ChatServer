@@ -9,6 +9,6 @@ angular.module("ChatApp", ["ngRoute"])
 	}).when("/roomlist", {
 		templateUrl: "src/roomlist/roomlist.html",
 		controller: "RoomlistController"
-		}).otherwise({redirectTo: "/roomlist"});
+		}).otherwise({redirectTo: "/login"});
 
 });
