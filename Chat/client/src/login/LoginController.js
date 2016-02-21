@@ -14,28 +14,26 @@ function LoginController($scope, $http, $location){
 		if(newValue){
 			if(newValue.length <= 3){   
 				//console.log("too short username");
-				$scope.errorMessage = "Too short.";
+				$scope.errorMessage = "Too short username.";
 			}
 			else
 			{
 				$scope.errorMessage = "";
+				$scope.onLogin = function() {
+				socket.emit("adduser", $scope.nick, function(available){
+					if (!available) {
+						$scope.errorMessage = "Nickname is already in use.";
+					}
+					else {
+						$scope.loggedIn = true;
+						//console.log("innskraning tokst");
+						$scope.$apply(function(){
+							$location.path("/roomlist")
+						});
+					}
+				})
+			};
 			}
 		}
 	});
-
-	$scope.onLogin = function() {
-		socket.emit("adduser", $scope.nick, function(available){
-			if (!available) {
-				$scope.errorMessage = "Nickname is already in use.";
-			}
-			else {
-				$scope.loggedIn = true;
-				//console.log("innskraning tokst");
-				$scope.$apply(function(){
-					$location.path("/roomlist")
-				});
-			}
-		})
-	};
-
 }]);

@@ -18,7 +18,7 @@ function RoomController($scope, $routeParams, $location, $http) {
 	socket.on("userlist", function(users){
 	//console.log("viðerumíherbergi");
 	$scope.$apply(function(){
-		//console.log("þetteruusers");
+		console.log("þetteruusers");
 		console.log(users);
 		$scope.user = users;
 		})
