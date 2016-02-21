@@ -8,21 +8,23 @@ function RoomController($scope, $routeParams, $location, $http) {
 	var thisRoom = $location.path().split("/")[2];
 
 	$scope.roomName = thisRoom;
-	$scope.user = "";
 
-	$scope.leaveRoom = function(){
+	$scope.leaveRoom = function() {
 		socket.emit("partroom", thisRoom); 
 		$location.path("/roomlist");		
 	}
 	
-	socket.on("userlist", function(users){
-	//console.log("viðerumíherbergi");
-	$scope.$apply(function(){
-		console.log("þetteruusers");
-		console.log(users);
-		$scope.user = users;
-		})
+	
+	console.log($location.path());
+	socket.on("roomlist", function(data) {
+		//console.log("viðerumíherbergi");
+		//console.log(users);
+		$scope.$apply(function() {
+			//console.log("þetteruusers");
+			console.log(users);
+			$scope.users = data[thisRoom].users;
+			})
 	});
-	socket.emit("users");
+	socket.emit("rooms");
 	
 }]);
