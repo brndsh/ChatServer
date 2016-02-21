@@ -13,8 +13,12 @@ function LoginController($scope, $http, $location){
 	$scope.$watch("nick", function (newValue, oldValue){
 		if(newValue){
 			if(newValue.length <= 3){   
-				console.log("too short username");
-				$scope.errorMessage = "Username has to be longer than 3 letters.";
+				//console.log("too short username");
+				$scope.errorMessage = "Too short.";
+			}
+			else
+			{
+				$scope.errorMessage = "";
 			}
 		}
 	});
@@ -22,19 +26,14 @@ function LoginController($scope, $http, $location){
 	$scope.onLogin = function() {
 		socket.emit("adduser", $scope.nick, function(available){
 			if (!available) {
-				$scope.loginError = "Innskráning mistókst"//When login fails
-				console.log("innskraning tokst ekki");
 				$scope.errorMessage = "Nickname is already in use.";
 			}
 			else {
 				$scope.loggedIn = true;
-
-				//$location.path("/roomlist");
-				console.log("innskraning tokst");
+				//console.log("innskraning tokst");
 				$scope.$apply(function(){
 					$location.path("/roomlist")
 				});
-				//TODO senda notandann á herbergjalistann
 			}
 		})
 	};

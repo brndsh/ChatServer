@@ -7,24 +7,21 @@ function RoomController($scope, $routeParams, $location, $http) {
 	var socket = io.connect("http://localhost:8080");
 	var thisRoom = $location.path().split("/")[2];
 
-
 	$scope.roomName = thisRoom;
+	$scope.user = "";
 
 	$scope.leaveRoom = function(){
 		socket.emit("partroom", thisRoom); 
 		$location.path("/roomlist");		
 	}
-
-	$scope.user = "";
-
-			socket.on("userlist", function(users){
-			console.log("viðerumíherbergi");
-			$scope.$apply(function(){
-			console.log("þetteruusers");
-			console.log(users.thisRoom);
-			$scope.user = users;
+	
+	socket.on("userlist", function(users){
+	//console.log("viðerumíherbergi");
+	$scope.$apply(function(){
+		//console.log("þetteruusers");
+		console.log(users);
+		$scope.user = users;
 		})
 	});
-
-
+	
 }]);
