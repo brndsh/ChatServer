@@ -54,4 +54,20 @@ function RoomlistController($scope, $routeParams, $location, $http) {
 			}
 		});
 	}
+
+	$scope.disconnect = function(){
+		socket.on("disconnect");
+		socket.emit("users");
+		$location.path("/login");
+
+		socket.emit("updateusers", function(room, users, ops) {
+			$scope.$apply(function() {
+				$scope.user = users;
+			})
+		});
+		
+		socket.emit("servermessage", quit, room, username);
+	
+	}
+
 }]);
