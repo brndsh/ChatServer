@@ -55,7 +55,7 @@ function RoomlistController($scope, $routeParams, $location, $http) {
 		});
 	}
 
-	$scope.disconnect = function(){
+	$scope.logOff = function(){
 		socket.on("disconnect");
 		socket.emit("users");
 		$location.path("/login");
