@@ -24,14 +24,9 @@ function RoomController($scope, $routeParams, $location, $http) {
 	
 	socket.on("userlist", function(users) {
 		socket.on("roomlist", function(roomlist) {
-		//console.log("viðerumíherbergi");
-		//console.log(users);
 			$scope.$apply(function() {
-				//console.log(roomlist[thisRoom].users);
-				//console.log("þetteruusers");
 				console.log(users);
 				$scope.user = roomlist[thisRoom].users;
-				//console.log(roomlist[thisRoom].users);
 			})
 		});
 		socket.emit("rooms");

@@ -60,13 +60,13 @@ function RoomlistController($scope, $routeParams, $location, $http) {
 		socket.emit("users");
 		$location.path("/login");
 
-		socket.emit("updateusers", function(room, users, ops) {
+		socket.emit("updateusers", function(join, users, ops) {
 			$scope.$apply(function() {
 				$scope.user = users;
 			})
 		});
 		
-		socket.emit("servermessage", quit, room, username);
+		socket.emit("servermessage", "quit", $scope.joinRoom.thisRoom, $scope.user);
 	
 	}
 
